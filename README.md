@@ -1,4 +1,4 @@
-# Project CPhoenix 
+# Project CPier 
 
 🐳 Dockerized Strapi & Next.js Setup
 
@@ -65,8 +65,8 @@ PROJECT_URL=
 
 ## Upcoming features / ToDos
 
-- Auto-install SSL Certificates
-- Workflow (scripts) for adding nmp packages to frontend/backend
+- Auto-install SSL Certificates using https://github.com/nginx-proxy/acme-companion
+~~- Workflow (scripts) for adding nmp packages to frontend/backend~~
 - MediaRendering in NEXT.js for Strapi images
 - NEXT.js fetcher utility class
 - Update Next.js and Strapi to latest version
@@ -76,10 +76,6 @@ PROJECT_URL=
 - Deployment / Server docker-compose configuration with built-in proxying
 - Cleanup .gitignore
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## Acknowledgments
 
 We would like to express our gratitude to the following projects:
@@ -88,11 +84,5 @@ We would like to express our gratitude to the following projects:
 - [Next.js](https://nextjs.org)
 - [NGINX Proxy](https://github.com/nginx-proxy/nginx-proxy)
 
-## Contact
-
-If you have any questions or need assistance with this project, please reach out to me at dragan@balatinac.com.
-
 
 ---
-
-Let's get started and Dockerize your Strapi and Next.js setup today! 🚀

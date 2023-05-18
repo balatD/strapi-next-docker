@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = ({ articles, error }) => {
@@ -13,6 +14,7 @@ const Home: NextPage = ({ articles, error }) => {
       </Head>
 
       <main className={styles.main}>
+        <DatePicker/>
         {articles.data.map(articles => (
             <div id={articles.id}>
               <h3>Title: {articles.attributes.title}</h3>

@@ -35,7 +35,7 @@ services:
       - internal
     volumes:
       - ./frontend:/app
-      - /app/node_modules
+      - frontend-node_modules:/app/node_modules
       - /app/.next
       - ./logs/frontend:/root/.npm/_logs
 
@@ -61,7 +61,7 @@ services:
       PROJECT_URL: ${PROJECT_URL}
     volumes:
       - ./backend:/app
-      - /app/node_modules
+      - backend-node_modules:/app/node_modules
       - ./.env:/app/.env
     networks:
       - internal
@@ -85,6 +85,19 @@ services:
 
 volumes:
   mariadb-data:
+  frontend-node_modules:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./frontend/node_modules
+  backend-node_modules:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./backend/node_modules
+
 
 networks:
   internal:
