@@ -17,3 +17,17 @@ else
     echo -e "${GREEN}Running $PROJECT_URL${NC}"
     docker-compose up -d
 fi
+
+echo
+echo
+echo
+echo
+echo -e "$PROJECT_NAME Information:"
+echo "+-------------------+"
+echo "|"
+echo "|   Frontend:  http://$PROJECT_URL"
+echo "|"
+echo "|   Backend:   http://$PROJECT_URL/strapi/admin"
+echo "|"
+echo "+-------------------+"
+echo
