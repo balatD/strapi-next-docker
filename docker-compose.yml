@@ -1,0 +1,95 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    restart: unless-stopped
+    container_name: ${PROJECT_NAME}_nginx
+    expose:
+      - "80"
+      - "443"
+    networks:
+      - proxy-manager_default
+      - internal
+    volumes:
+      - ./backend/public:/app/backend/public
+      - ./frontend/public:/app/frontend/public
+      - ./conf/nginx/:/etc/nginx:ro
+      - ./logs/nginx/:/var/log/nginx
+      - /etc/localtime:/etc/localtime:ro
+    depends_on:
+      - frontend
+      - backend
+    environment:
+      - VIRTUAL_HOST=${PROJECT_URL}
+
+  frontend:
+    container_name: ${PROJECT_NAME}_frontend
+    env_file: .env
+    build:
+      context: .
+      dockerfile: ./docker/frontend/${ENVIRONMENT}/Dockerfile
+      args:
+        - NODE_ENV=${ENVIRONMENT}
+    restart: unless-stopped
+    networks:
+      - internal
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+      - ./logs/frontend:/root/.npm/_logs
+
+  backend:
+    container_name: ${PROJECT_NAME}_backend
+    build:
+      context: .
+      dockerfile: ./docker/backend/${ENVIRONMENT}/Dockerfile
+      args:
+        - NODE_ENV=${ENVIRONMENT}
+    command: >
+      sh -c "strapi build"
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_HOST: mariadb
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PORT: ${DATABASE_PORT}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      NODE_ENV: ${ENVIRONMENT}
+      PROJECT_URL: ${PROJECT_URL}
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - ./.env:/app/.env
+    networks:
+      - internal
+    depends_on:
+      - mariadb
+
+  mariadb:
+    container_name: ${PROJECT_NAME}_database
+    image: mariadb:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USERNAME}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    networks:
+      - internal
+
+volumes:
+  mariadb-data:
+
+networks:
+  internal:
+    driver: bridge
+  proxy-manager_default:
+    external: true
