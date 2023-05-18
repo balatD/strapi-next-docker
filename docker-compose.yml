@@ -46,8 +46,6 @@ services:
       dockerfile: ./docker/backend/${ENVIRONMENT}/Dockerfile
       args:
         - NODE_ENV=${ENVIRONMENT}
-    command: >
-      sh -c "strapi build"
     restart: unless-stopped
     env_file: .env
     environment:
