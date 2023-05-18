@@ -1,4 +1,4 @@
-# NEXT-GEN Development Stack
+# Project CPhoenix 
 
 🐳 Dockerized Strapi & Next.js Setup
 
@@ -63,6 +63,19 @@ PROJECT_URL=
 
 8. Access the Strapi admin panel at `PROJECT_URL/strapi/admin`.
 
+## Upcoming features / ToDos
+
+- Auto-install SSL Certificates
+- Workflow (scripts) for adding nmp packages to frontend/backend
+- MediaRendering in NEXT.js for Strapi images
+- NEXT.js fetcher utility class
+- Update Next.js and Strapi to latest version
+- Nginx configuration template rendering (using project_url from .env file)
+- Documentation
+- Ddev-router collision
+- Deployment / Server docker-compose configuration with built-in proxying
+- Cleanup .gitignore
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
@@ -78,6 +91,7 @@ We would like to express our gratitude to the following projects:
 ## Contact
 
 If you have any questions or need assistance with this project, please reach out to me at dragan@balatinac.com.
+
 
 ---
 
