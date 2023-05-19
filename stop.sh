@@ -9,5 +9,5 @@ NC='\033[0m'
 docker-compose down -d
 
 echo
-echo -e "${GREEN}Stopping $PROJECT_URL ...${NC}"
+echo -e "${GREEN}Stopped $PROJECT_URL ...${NC}"
 echo
