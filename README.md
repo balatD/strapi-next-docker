@@ -22,6 +22,22 @@ This project provides a Dockerized setup for a Strapi and Next.js application. I
 
 ⚙️ nginxproxy/nginx-proxy: Ensure you have the `nginxproxy/nginx-proxy` Docker container running in the background to handle reverse proxying.
 
+Example nginx-proxy docker-compose.yml file (this will be used globally by all projects):
+```yaml
+version: '3'
+services: 
+    nginx-proxy: 
+        image: nginxproxy/nginx-proxy 
+        ports: 
+          - "80:80" 
+        volumes: 
+          - /var/run/docker.sock:/tmp/docker.sock:ro
+networks: 
+    proxy: 
+        external: true
+```
+
+
 ## Getting Started
 
 To get started with this Dockerized Strapi & Next.js setup, follow these steps:
