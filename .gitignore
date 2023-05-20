@@ -44,3 +44,4 @@ sketch
 .idea
 conf/nginx/conf.d
 conf/nginx/default.conf
+*.sql
