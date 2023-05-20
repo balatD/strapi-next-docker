@@ -5,5 +5,5 @@ module.exports = ({ env }) => ({
   apiToken: {
     salt: env('API_TOKEN_SALT'),
   },
-  url: "/admin",
+  url: 'http://' + env('PROJECT_URL', '127.0.0.1') + '/strapi/admin/',
 });

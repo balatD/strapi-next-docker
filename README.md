@@ -51,30 +51,28 @@ PROJECT_NAME=
 PROJECT_URL=
 ```
 
-5. Change the `server_name` in `conf/nginx/default.conf` to the same URL used in `PROJECT_URL`:
-
-6. Start the containers with the ./start.sh bash script:
+5. Start the containers with the ./start.sh bash script:
 
 ```shell
 ./start.sh
 ```
 
-7. Open your browser and visit `PROJECT_URL` to see the Next.js frontend.
+6. Open your browser and visit `PROJECT_URL` to see the Next.js frontend.
 
-8. Access the Strapi admin panel at `PROJECT_URL/strapi/admin`.
+7. Access the Strapi admin panel at `PROJECT_URL/strapi/admin`.
 
 ## Upcoming features / ToDos
 
 - Auto-install SSL Certificates using https://github.com/nginx-proxy/acme-companion
-~~- Workflow (scripts) for adding nmp packages to frontend/backend~~
+- ~~Workflow (scripts) for adding nmp packages to frontend/backend~~
 - MediaRendering in NEXT.js for Strapi images
 - NEXT.js fetcher utility class
 - Update Next.js and Strapi to latest version
-- Nginx configuration template rendering (using project_url from .env file)
+- ~~Nginx configuration template rendering (using project_url from .env file)~~
 - Documentation
 - Ddev-router collision
 - Deployment / Server docker-compose configuration with built-in proxying
-- Cleanup .gitignore
+- ~~Cleanup .gitignore~~
 
 ## Acknowledgments
 

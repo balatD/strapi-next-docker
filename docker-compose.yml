@@ -13,7 +13,8 @@ services:
     volumes:
       - ./backend/public:/app/backend/public
       - ./frontend/public:/app/frontend/public
-      - ./conf/nginx/:/etc/nginx:ro
+      - ./conf/nginx/:/etc/nginx:rw
+      - ./conf/nginx/:/etc/nginx/conf.d
       - ./logs/nginx/:/var/log/nginx
       - /etc/localtime:/etc/localtime:ro
     depends_on:
